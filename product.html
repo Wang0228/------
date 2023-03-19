@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="product.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="wrap-header">
+            <a href="#"><img src="https://drive.google.com/uc?export=view&id=1Iu0NtaEZs_pAxKRNRPjXvyCmlofhOgR7"
+                    alt=""></a>
+            <h1>XX公司產品查詢</h1>
+        </div>
+    </header>
+
+    <main>
+        <div class="wrap">
+            <div class="bt">
+                <button id="B1">商品篩選</button>
+                <button id="B2">商品查詢</button>
+            </div>
+        </div>
+
+        <div class="wrap">
+            <div class="show">
+                <div class="search">
+                    <div class="filter">
+                        <div class="filter-1">
+                            <div class="filter-left">
+                                <p>商品價格</p>
+                                <p>價格<input type="text" name="" id="">以下</p>
+                                <p>商品數量</p>
+                                <p>數量<input type="text" name="" id="">以下</p>
+                                <p>商品類別</p>
+                                <select name="" id="">
+                                    <option value="">3C</option>
+                                    <option value="">飲料</option>
+                                    <option value="">食品</option>
+                                </select>
+                            </div>
+                            <div class="filter-right">
+                                <button>查詢</button>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="find">
+                        <div class="filter-1">
+                            <div class="filter-left">
+                                <p>商品編號查詢</p>
+                                <input type="text" name="" id="">
+                            </div>
+                            <div class="filter-right">
+                                <button>查詢</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="data">
+                    <div class="data_1">
+                        <template>
+                            <div class="card">
+                                <div class="pic">
+                                    <h4></h4>
+                                    <img src="https://picsum.photos/300/200/?random=10">
+                                </div>
+                                <div class="text">
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                    <p></p>
+                                </div>
+                            </div>
+                        </template>
+                        
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>代號</td>
+                                <td>名稱</td>
+                                <td>數量</td>
+                                <td>價格</td>
+                                <td>類別</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+
+    <script type="module">
+        import product from "./product.js";
+
+        window.onload = () => {
+            let table = document.querySelector('tbody');
+            let filter_show=document.querySelector('.filter');
+            let find_show=document.querySelector('.find');
+            let filter_button=document.getElementById('B1');
+            let find_button=document.getElementById('B2');
+
+            
+
+
+            finddata(table);
+
+            filter_button.addEventListener('click',()=>{
+                filter_show.style.display='block';
+                find_show.style.display='none';
+            })
+            find_button.addEventListener('click',()=>{
+                find_show.style.display='block';
+                filter_show.style.display='none';
+            })
+            data();
+            
+        }
+
+        function data(){
+            let data_1=document.querySelector('.data_1');
+            let template=document.querySelector('template');
+            product.forEach(element=>{
+                let card=document.importNode(template.content,true);
+                card.querySelector('.pic>h4').textContent=Object.values(element)[0];
+                card.querySelector('.text p:nth-child(1)').textContent=Object.values(element)[1];
+                card.querySelector('.text p:nth-child(2)').textContent=Object.values(element)[2];
+                card.querySelector('.text p:nth-child(3)').textContent=Object.values(element)[3];
+                card.querySelector('.text p:nth-child(4)').textContent=Object.values(element)[4];
+                data_1.append(card);
+            })
+            
+        }
+
+
+        function finddata(table) {
+            product.forEach(element => {
+                let tr = document.createElement('tr')
+                for (var i = 0; i < 5; i++) {
+                    let td = document.createElement('td');
+                    td.innerText = Object.values(element)[i];
+                    tr.append(td);
+                }
+                table.append(tr);
+            });
+        }
+
+    </script>
+
+</body>
+
+</html>
