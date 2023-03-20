@@ -57,6 +57,7 @@ header {
 }
 .filter-1 {
     display: flex;
+    margin-bottom: 20px;
 }
 
 .filter-left {
@@ -66,7 +67,7 @@ header {
 .filter-right {
     width: 30%;
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
 }
 
@@ -92,14 +93,19 @@ header {
     margin: 2% 2%;
     background:#8FBC8F;
     padding: 20px;
+    padding-top: 15px;
     border-radius: 20px;
 }
 .card img{
-    border-radius: 50%;
+    border-radius: 5px;
+    margin-top: 5px;
     width: 100%;
 }
-.card .text{
-    width: 60%;
+.card .pic{
+    margin-bottom: 10px;
+}
+.text{
+    line-height: 1.5;
 }
 
 .data table {
