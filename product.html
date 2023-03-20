@@ -33,19 +33,19 @@
                     <div class="filter">
                         <div class="filter-1">
                             <div class="filter-left">
-                                <p>商品價格</p>
-                                <p>價格<input type="text" name="" id="">以下</p>
-                                <p>商品數量</p>
-                                <p>數量<input type="text" name="" id="">以下</p>
                                 <p>商品類別</p>
-                                <select name="" id="">
-                                    <option value="">3C</option>
-                                    <option value="">飲料</option>
-                                    <option value="">食品</option>
+                                <select name="" id="ProductType">
+                                    <option value="1">3C</option>
+                                    <option value="2">飲料</option>
+                                    <option value="3">食品</option>
                                 </select>
+                                <p>商品價格</p>
+                                <p>價格<input type="text" name="" id="price">以下</p>
+                                <p>商品數量</p>
+                                <p>數量<input type="text" name="" id="Amount">以下</p>
                             </div>
                             <div class="filter-right">
-                                <button>查詢</button>
+                                <button id="ft_button">查詢</button>
                             </div>
 
                         </div>
@@ -54,10 +54,10 @@
                         <div class="filter-1">
                             <div class="filter-left">
                                 <p>商品編號查詢</p>
-                                <input type="text" name="" id="">
+                                <input type="text" name="" id="search_tx">
                             </div>
                             <div class="filter-right">
-                                <button>查詢</button>
+                                <button id="fd_button">查詢</button>
                             </div>
                         </div>
                     </div>
@@ -109,27 +109,69 @@
             let filter_button=document.getElementById('B1');
             let find_button=document.getElementById('B2');
 
-            
-
-
-            finddata(table);
-
+            //商品篩選
             filter_button.addEventListener('click',()=>{
+                clear()
                 filter_show.style.display='block';
                 find_show.style.display='none';
             })
+            //商品查詢
             find_button.addEventListener('click',()=>{
+                clear()
                 find_show.style.display='block';
                 filter_show.style.display='none';
             })
-            data();
+            let ft=document.getElementById('ft_button');
+            //篩選查詢按鈕
+            ft.addEventListener('click',()=>{
+                ft_data()
+            });
+            let fb=document.getElementById('fd_button');
+            fb.addEventListener('click',()=>{
+                fb_data()
+            })
+            finddata(table);
+        }
+
+        function ft_data(){
+            let pr=document.getElementById('price');
+            let at=document.getElementById('Amount');
+            let pt=document.getElementById('ProductType');
+
+            let product_find_1=product.filter(x=>x.ProductType==pt.options[pt.selectedIndex].text);
+            let product_find_2=product_find_1;
+            if(pr.value){
+                product_find_2=product_find_2.filter(x=>x.Price<pr.value);
+            }
+            let product_find_3=product_find_2;
+            if(at.value){
+                product_find_3=product_find_3.filter(x=>x.Amount<at.value);
+            }
+            
+            drowdata(product_find_3);
             
         }
 
-        function data(){
+        function fb_data(){
+            let search=document.getElementById('search_tx');
+            let product_find=product.filter(x=>x.ProductNumber==search.value);
+            drowdata(product_find);
+        }
+
+        function clear(){
+            let dataClear=document.querySelectorAll('.card');
+            if(dataClear.length > 0){
+                dataClear.forEach(div=>{
+                    div.remove();
+                })
+                }
+        }
+
+        function drowdata(data){
+            clear();
             let data_1=document.querySelector('.data_1');
             let template=document.querySelector('template');
-            product.forEach(element=>{
+            data.forEach(element=>{
                 let card=document.importNode(template.content,true);
                 card.querySelector('.pic>h4').textContent=Object.values(element)[0];
                 card.querySelector('.text p:nth-child(1)').textContent="名稱:"+Object.values(element)[1];
@@ -138,11 +180,10 @@
                 card.querySelector('.text p:nth-child(4)').textContent="種類:"+Object.values(element)[4];
                 data_1.append(card);
             })
-            
         }
 
-
         function finddata(table) {
+            // let a=product.filter(x=>x.ProductNumber=='P001');
             product.forEach(element => {
                 let tr = document.createElement('tr')
                 for (var i = 0; i < 5; i++) {

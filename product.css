@@ -52,9 +52,11 @@ header {
     font-weight: 900;
     border-radius: 30px;
 }
-.search{
+
+.search {
     position: relative;
 }
+
 .filter-1 {
     display: flex;
     margin-bottom: 20px;
@@ -62,6 +64,16 @@ header {
 
 .filter-left {
     width: 70%;
+}
+
+.filter-left select {
+    width: 225px;
+    height: 30px;
+    font-size: 20px;
+    background-color: rgb(166, 166, 239);
+    border-radius: 5px;
+    margin-bottom: 5px;
+    color: white;
 }
 
 .filter-right {
@@ -78,33 +90,40 @@ header {
     font-size: 20px;
     border-radius: 10px;
 }
-.find{
+
+.find {
     display: none;
 }
-.filter{
+
+.filter {
     display: none;
 }
-.data_1{
+
+.data_1 {
     display: flex;
     flex-wrap: wrap;
 }
-.card{
+
+.card {
     width: 38%;
     margin: 2% 2%;
-    background:#8FBC8F;
+    background: #bfe2bf;
     padding: 20px;
     padding-top: 15px;
     border-radius: 20px;
 }
-.card img{
+
+.card img {
     border-radius: 5px;
     margin-top: 5px;
     width: 100%;
 }
-.card .pic{
+
+.card .pic {
     margin-bottom: 10px;
 }
-.text{
+
+.text {
     line-height: 1.5;
 }
 
