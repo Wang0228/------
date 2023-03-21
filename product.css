@@ -10,7 +10,7 @@ body {
 
 .wrap {
     margin: auto;
-    width: 500px;
+    padding: 0 10px;
 }
 
 header {
@@ -20,13 +20,13 @@ header {
 
 .wrap-header {
     margin: auto;
-    width: 500px;
+    width: 100%;
     display: flex;
     justify-content: space-between;
 }
 
 .wrap-header h1 {
-    font-size: 30px;
+    font-size: 25px;
     margin-top: 13px;
 }
 
@@ -55,6 +55,8 @@ header {
 
 .search {
     position: relative;
+    
+    padding-top: 10px;
 }
 
 .filter-1 {
@@ -75,6 +77,9 @@ header {
     margin-bottom: 5px;
     color: white;
 }
+
+
+
 
 .filter-right {
     width: 30%;
@@ -98,19 +103,36 @@ header {
 .filter {
     display: none;
 }
-
+#lft{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#search_tx{
+    width: 80%;
+}
 .data_1 {
     display: flex;
     flex-wrap: wrap;
+    height: 500px;
+    overflow: auto;
 }
 
 .card {
-    width: 38%;
-    margin: 2% 2%;
+    width: 46%;
+    height: 280px;
+    margin: 2% auto;
     background: #bfe2bf;
     padding: 20px;
     padding-top: 15px;
     border-radius: 20px;
+    box-sizing: border-box;
+    position: relative;
+}
+.card_big{
+    width: 90%;
+    height: 450px;
+    font-size: 25px;
 }
 
 .card img {
@@ -129,4 +151,70 @@ header {
 
 .data table {
     margin: auto;
+}
+.zero{
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.zero img{
+    width: 100%;
+}
+
+@media screen and (width>768px){
+    .wrap{
+        width: 960px;
+    }
+    .wrap-header{
+        justify-content: center;
+        padding-bottom: 10px;
+    }
+    #home{
+        display: none;
+    }
+    .bt{
+        justify-content: left;
+        margin-left: 65px;
+    }
+    .bt button{
+        margin: 10px;
+    }
+    .search{
+        width: 220px;
+        margin-left: 50px;
+        background-color: #FCFCFC;
+        border-radius: 50px;
+        padding:20px;
+        height: fit-content;
+        display: none;
+    }
+    .filter-1{
+        flex-direction: column;
+    }
+    .filter-left p:nth-child(1){
+        display: inline-block;
+
+    }
+    .filter-right{
+        align-items: end;
+    }
+    .show{
+        display: flex;
+    }
+    .filter-right{
+        margin: auto;
+        width: 100px;
+    }
+    .filter-right button{
+        margin-top: 20px;
+    }
+    .card{
+        height: 350px;
+    }
+    .card_big{
+        height: 450px;
+    }
+    
 }
