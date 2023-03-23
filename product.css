@@ -119,7 +119,7 @@ header {
 }
 
 .card {
-    width: 46%;
+    width: 60%;
     height: 280px;
     margin: 2% auto;
     background: #bfe2bf;
@@ -190,6 +190,9 @@ header {
         height: fit-content;
         display: none;
     }
+    #search_tx{
+        width: 130%;
+    }
     .filter-1{
         flex-direction: column;
     }
@@ -211,10 +214,12 @@ header {
         margin-top: 20px;
     }
     .card{
+        width: 46%;
         height: 350px;
     }
     .card_big{
         height: 450px;
+        width: 300px
     }
     
 }
